@@ -1,10 +1,10 @@
 
-//Clases para cada usuario (J,G, S)
-class Persona{
+//Clases para cada usuario (J,G, S) solo con nombre y contraseñas
+//Para la logica se van a usar otras clases
+class PersonaLogin{
     constructor(nombreIng, contraseñaIng){
         this.nombre = nombreIng;
         this.contraseña = contraseñaIng;
-        this.siguienteRealizador = [this];
     }
 }
 
@@ -14,15 +14,15 @@ contraseñaGuady = "Jaima";
 contraseñaSebi = "Dios";
 
 //Objetos de cada usuario
-PersonaJuli = new Persona("Juli", contraseñaJuli);
-PersonaGuady = new Persona("Guady", contraseñaGuady);
-PersonaSebi = new Persona("Sebi", contraseñaSebi);
+personaLoginJuli = new PersonaLogin("Juli", contraseñaJuli);
+personaLoginGuady = new PersonaLogin("Guady", contraseñaGuady);
+personaLoginSebi = new PersonaLogin("Sebi", contraseñaSebi);
 
 //Array para recorrer a las personas
-arrayPersonas = [];
-arrayPersonas.push(PersonaJuli);
-arrayPersonas.push(PersonaGuady);
-arrayPersonas.push(PersonaSebi);
+arrayPersonasLogin = [];
+arrayPersonasLogin.push(personaLoginJuli);
+arrayPersonasLogin.push(personaLoginGuady);
+arrayPersonasLogin.push(personaLoginSebi);
 
 //Variable que guarda el objeto con el usuario que iniciara sesion
 usuarioSesion = null;
@@ -36,12 +36,9 @@ function validarLogin(formulario) {
 	var inpUser = document.getElementById("inpUser").value;
 	var inpPass = document.getElementById("inpPass").value;
 
-	//Para guardar el resultado de las comparaciones
-	var usuarioValido = false;
-
 	//Formato de foreach para un array que ejecuta la funcion descripta
 	//El foreach compara el ingreso con los objetos de personas
-	arrayPersonas.forEach(function(persona){
+	arrayPersonasLogin.forEach(function(persona){
 		//Compara el ingreso a usuarios y contraseñas y guarda si hay un correcto y el usuario que inicia sesion
 		if(persona.nombre == inpUser && persona.contraseña == inpPass){
 			usuarioSesion = persona;
