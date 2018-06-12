@@ -1,23 +1,30 @@
 
-//Clase para la logica de las personas con metodos para turnos
-class Persona{
-	constructor(nombreIng, color){
-		this.nombre = nombreIng;
-		this.colorFondo = color;
-		this.siguienteRealizador = [this];
+//Crea todas las variables necesarias para empezar a trabajar
+function crearVariables(){
+	//Clase para la logica de las personas con metodos para turnos
+	class Persona{
+		constructor(nombreIng, color, letra){
+			this.nombre = nombreIng;
+			//Colores que representan al usuario por UI
+			this.colorFondo = color;
+			this.colorLetra = letra;
+			//Array de la siguiente persona que tiene que hacer su turno
+			this.siguienteRealizador = [this];
+		}
 	}
+
+	//Los 3 objetos de trabajo
+	var personaJuli= new Persona("Juli", "purple", "white");
+	var personaGuady= new Persona("Guady", "orange", "black");
+	var personaSebi= new Persona("Sebi", "green", "white");
+
+	//Array de todos los usuarios
+	arrayPersonas = [];
+	arrayPersonas.push(personaJuli);
+	arrayPersonas.push(personaGuady);
+	arrayPersonas.push(personaSebi);
 }
 
-//Los 3 objetos de trabajo
-var personaJuli= new Persona("Juli", "purple");
-var personaGuady= new Persona("Guady", "orange");
-var personaSebi= new Persona("Sebi", "green");
-
-//Array de todos los usuarios
-arrayPersonas = [];
-arrayPersonas.push(personaJuli);
-arrayPersonas.push(personaGuady);
-arrayPersonas.push(personaSebi);
 
 //Funcion para acceder a los datos del get
 function parseURLParams(url) {
@@ -40,21 +47,43 @@ function parseURLParams(url) {
     return parms;
 }
 
-//Accede a los datos del GET del form login
-parametrosGet = parseURLParams(window.location.href);
-	/*
-	Devuelve algo con el formato
-	Object{
-		inpuser = "Guady",
-		inppas = "Jaima"
-	}
-	*/
 
-//Para determinar el usuario que logueo comparo los nombres de cada persona con los datos de GET
-arrayPersonas.forEach(function(persona){
-	if(persona.nombre == parametrosGet.inpuser)
-		usuarioActual = persona;
-});
+function establecerUsuarioActual(){
+	//Accede a los datos del GET del form login
+	parametrosGet = parseURLParams(window.location.href);
+		/*
+		Devuelve algo con el formato
+		Object{
+			inpuser = "Guady",
+			inppas = "Jaima"
+		}
+		*/
 
-//Cambia el fondo dependiendo del usuario
-document.body.style = "background-color: " + usuarioActual.colorFondo;
+	//Para determinar el usuario que logueo comparo los nombres de cada persona con los datos de GET
+	arrayPersonas.forEach(function(persona){
+		if(persona.nombre == parametrosGet.inpuser)
+			usuarioActual = persona;
+	});
+}
+
+
+function iniciarPagina(){
+	establecerUsuarioActual();
+	//Cambia el color de la barra header
+	//Tambien podria ser que cambie el color de la barra de estado
+	var barraHeader = document.getElementsByClassName("barraHeader")[0];
+	barraHeader.style = "background-color: " + usuarioActual.colorFondo;
+	barraHeader.style.color = usuarioActual.colorLetra;
+
+	//Cambia el nombre de usuario en el header del menu lateral
+	var tituloHeader = document.getElementsByClassName("tituloHeader")[0];
+	tituloHeader.innerHTML = usuarioActual.nombre;
+
+}
+
+//Crea los datos y establece lo necesario para empezar a trabajar
+//Dejar siempre al final para que tenga ya declaradas todas las funciones
+function onLoad(){
+	crearVariables();
+	iniciarPagina();
+}
