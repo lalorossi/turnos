@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="css\login.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+	<div class="loginContainer">
+		<form class="loginContent" onsubmit="return validarLogin()" action="home.html" method="GET">
+			<div class="ingreso">
+				<input class="inpLogin" type="text" name="inpuser" id="inpUser" placeholder="Usuario" autofocus>
+				<input class="inpLogin" type="password" name="inppass" id="inpPass" placeholder="Contraseña">
+			</div>
+			<input type="submit" class="btnLogin" value="LOGIN"></input>
+		</form>
+	</div>
+<script type="text/javascript" src="js/login.js"></script>
+</body>
+</html>

@@ -259,6 +259,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: ":CordovaLib"))
+    compile "net.sourceforge.jtds:jtds:1.2.7"
     // SUB-PROJECT DEPENDENCIES END
 }
 

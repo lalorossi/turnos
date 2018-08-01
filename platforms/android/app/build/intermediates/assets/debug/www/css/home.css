@@ -1,0 +1,65 @@
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
+/*
+	Todo lo del header sacado de
+	http://jsbin.com/UWeQeli/1/edit?html,css,output
+*/
+/* BARRA HEADER */
+	.barraHeader {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 44px;
+		/*color: white;*/
+		background-color: #ddd;
+    	box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+		z-index: 1;
+	}
+
+	.barraHeader .tituloHeader {
+		/*color: #212121; Cambia con cada usuario*/
+		font-weight: bold;  
+		position: absolute;
+		left: 44px;
+		right: 44px;
+		text-align: center;
+		font-size: 150%;
+		margin: 8px;
+	}
+
+/* POSICION DE BOTONES */
+	.botonLeft {
+		left: 0;
+		border-right: 1px;
+	}
+
+	.botonRight {
+		right: 0;
+		border-left: 1px;
+	}
+
+/* BOTONES DE LA BARRA HEADER */
+	.barraHeader .boton {
+		width: 44px;
+		height: 44px;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+	}
+
+	.barraHeader .boton a {
+		display: block;
+		text-align: center;
+		font-size: 150%;
+		font-weight: bolder;
+		height: 39px;
+		padding-top: 5px;
+	}
+
+	.barraHeader .boton a:active {
+		background-color: #ccc;
+	}
+
