@@ -7,15 +7,22 @@
     <link rel="stylesheet" href="css\home.css">
 </head>
 <body onload="onLoad()">
-	
-	<!-- Navigation -->
-	<div class="barraHeader">
-		<div class="boton botonLeft"><a>&#9776;</a></div>
-		<div class="tituloHeader">Example App</div>
-		<div class="boton botonRight"><a>&vellip;</a></div>
-	</div>
+	<div id="home">
+		<!-- Navigation -->
+		<div class="barraHeader">
+			<div class="boton botonLeft"><a>&#9776;</a></div>
+			<div class="tituloHeader">Example App</div>
+			<div class="boton botonRight"><a>&vellip;</a></div>
+		</div>
 
-	<div id="pagina">
+		<div id="contenidoPagina" style = "margin-top: 50px">
+			<button onclick="clickHacerTurnoJ()">JULI</button>
+			<button onclick="clickHacerTurnoG()">GUADY</button>
+			<button onclick="clickHacerTurnoS()">SEBI</button>
+			<div id="estadoJ"></div>
+			<div id="estadoG"></div>
+			<div id="estadoS"></div>
+		</div>
 	</div>
 <script type="text/javascript" src="js\home.js"></script>
 </body>
