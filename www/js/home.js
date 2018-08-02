@@ -1,3 +1,11 @@
+//Crea los datos y establece lo necesario para empezar a trabajar
+//Dejar siempre al final para que tenga ya declaradas todas las funciones
+function onLoad(){
+	crearVariables();
+	iniciarPagina();
+	mostrarEstado();
+}
+
 
 //Crea todas las variables necesarias para empezar a trabajar
 function crearVariables(){
@@ -70,25 +78,23 @@ function crearVariables(){
 }
 
 
-//Funcion para acceder a los datos del get
-function parseURLParams(url) {
-    var queryStart = url.indexOf("?") + 1,
-        queryEnd   = url.indexOf("#") + 1 || url.length + 1,
-        query = url.slice(queryStart, queryEnd - 1),
-        pairs = query.replace(/\+/g, " ").split("&"),
-        parms = {}, i, n, v, nv;
+function iniciarPagina(){
+	establecerUsuarioActual();
+	//Cambia el color de la barra header
+	//Tambien podria ser que cambie el color de la barra de estado
+	var barraHeader = document.getElementsByClassName("barraHeader")[0];
+	barraHeader.style = "background-color: " + usuarioActual.colorFondo;
+	barraHeader.style.color = usuarioActual.colorLetra;
 
-    if (query === url || query === "") return;
+	//Cambia el nombre de usuario en el header del menu lateral
+	var tituloHeader = document.getElementsByClassName("tituloHeader")[0];
+	tituloHeader.innerHTML = usuarioActual.nombre;
 
-    for (i = 0; i < pairs.length; i++) {
-        nv = pairs[i].split("=", 2);
-        n = decodeURIComponent(nv[0]);
-        v = decodeURIComponent(nv[1]);
-
-        if (!parms.hasOwnProperty(n)) parms[n] = [];
-        parms[n].push(nv.length === 2 ? v : null);
-    }
-    return parms;
+	// SqlServer.init("den1.mysql5.gear.host", "SQLEXPRESS", "appturnos", "Ma3R8882~Y?O	", "appturnos", function(event) {
+	//   window.alert(JSON.stringify(event));
+	// }, function(error) {
+	//   window.alert(JSON.stringify(error));
+	// });
 }
 
 
@@ -111,78 +117,98 @@ function establecerUsuarioActual(){
 }
 
 
-function iniciarPagina(){
-	establecerUsuarioActual();
-	//Cambia el color de la barra header
-	//Tambien podria ser que cambie el color de la barra de estado
-	var barraHeader = document.getElementsByClassName("barraHeader")[0];
-	barraHeader.style = "background-color: " + usuarioActual.colorFondo;
-	barraHeader.style.color = usuarioActual.colorLetra;
+//Funcion para acceder a los datos del get
+function parseURLParams(url) {
+    var queryStart = url.indexOf("?") + 1,
+        queryEnd   = url.indexOf("#") + 1 || url.length + 1,
+        query = url.slice(queryStart, queryEnd - 1),
+        pairs = query.replace(/\+/g, " ").split("&"),
+        parms = {}, i, n, v, nv;
 
-	//Cambia el nombre de usuario en el header del menu lateral
-	var tituloHeader = document.getElementsByClassName("tituloHeader")[0];
-	tituloHeader.innerHTML = usuarioActual.nombre;
+    if (query === url || query === "") return;
 
-	// SqlServer.init("den1.mysql5.gear.host", "SQLEXPRESS", "appturnos", "Ma3R8882~Y?O	", "appturnos", function(event) {
-	//   window.alert(JSON.stringify(event));
-	// }, function(error) {
-	//   window.alert(JSON.stringify(error));
-	// });
+    for (i = 0; i < pairs.length; i++) {
+        nv = pairs[i].split("=", 2);
+        n = decodeURIComponent(nv[0]);
+        v = decodeURIComponent(nv[1]);
+
+        if (!parms.hasOwnProperty(n)) parms[n] = [];
+        parms[n].push(nv.length === 2 ? v : null);
+    }
+    return parms;
 }
 
+
+//Muestra en pantalla el estado de los objetos de personas
 function mostrarEstado(){
 	contenedorJ = document.getElementById("estadoJ");
 	contenedorJ.innerHTML = "JULI";
 	contenedorJ.innerHTML += "<br/>";
 	contenedorJ.innerHTML += "Siguientes realizadores: ";
-	contenedorJ.innerHTML += personaJuli.siguienteRealizador[0].nombre;
-	if(personaJuli.siguienteRealizador[1] != null) contenedorJ.innerHTML += personaJuli.siguienteRealizador[1].nombre;
-	if(personaJuli.siguienteRealizador[2] != null) contenedorJ.innerHTML += personaJuli.siguienteRealizador[2].nombre;
-	if(personaJuli.siguienteRealizador[3] != null) contenedorJ.innerHTML += personaJuli.siguienteRealizador[3].nombre;
+
+	var i = 0;
+	while(personaJuli.siguienteRealizador[i] != null){
+		contenedorJ.innerHTML += personaJuli.siguienteRealizador[i].nombre;
+		i++;	
+	}
+
 	contenedorJ.innerHTML += "<br/>";
 	contenedorJ.innerHTML += "<br/>";
+
 
 	contenedorG = document.getElementById("estadoG");
 	contenedorG.innerHTML = "GUADY";
 	contenedorG.innerHTML += "<br/>";
 	contenedorG.innerHTML += "Siguientes realizadores: ";
-	contenedorG.innerHTML += personaGuady.siguienteRealizador[0].nombre;
-	if(personaGuady.siguienteRealizador[1] != null) contenedorG.innerHTML += personaGuady.siguienteRealizador[1].nombre;
-	if(personaGuady.siguienteRealizador[2] != null) contenedorG.innerHTML += personaGuady.siguienteRealizador[2].nombre;
-	if(personaGuady.siguienteRealizador[3] != null) contenedorG.innerHTML += personaGuady.siguienteRealizador[3].nombre;
+
+	var i = 0;
+	while(personaGuady.siguienteRealizador[i] != null){
+		contenedorG.innerHTML += personaGuady.siguienteRealizador[i].nombre;
+		i++;	
+	}
+
 	contenedorG.innerHTML += "<br/>";
 	contenedorG.innerHTML += "<br/>";
+
 
 	contenedorS = document.getElementById("estadoS");
 	contenedorS.innerHTML = "SEBI";
 	contenedorS.innerHTML += "<br/>";
 	contenedorS.innerHTML += "Siguientes realizadores: ";
-	contenedorS.innerHTML += personaSebi.siguienteRealizador[0].nombre;
-	if(personaSebi.siguienteRealizador[1] != null) contenedorS.innerHTML += personaSebi.siguienteRealizador[1].nombre;
-	if(personaSebi.siguienteRealizador[2] != null) contenedorS.innerHTML += personaSebi.siguienteRealizador[2].nombre;
-	if(personaSebi.siguienteRealizador[3] != null) contenedorS.innerHTML += personaSebi.siguienteRealizador[3].nombre;
+
+	var i = 0;
+	while(personaSebi.siguienteRealizador[i] != null){
+		contenedorS.innerHTML += personaSebi.siguienteRealizador[i].nombre;
+		i++;	
+	}
+
 	contenedorS.innerHTML += "<br/>";
 	contenedorS.innerHTML += "<br/>";
 
-	contenedorS.innerHTML += ("Le toca a: " + turnos.aQuienLeToca().nombre + " en el turno de: " + turnos.getPosicion().nombre);
+	contenedorSiguienteTurno = document.getElementById("siguienteTurno");
+	contenedorSiguienteTurno.innerHTML = ("Le toca a: " + turnos.aQuienLeToca().nombre + " en el turno de: " + turnos.getPosicion().nombre);
 }
 
+
+//Para pruebas: Indica que Juli hace un turno
 function clickHacerTurnoJ(){
 	turnos.hacerTurno(personaJuli);	
 }
 
+
+//Para pruebas: Indica que Guady hace un turno
 function clickHacerTurnoG(){
 	turnos.hacerTurno(personaGuady);
 }
 
+
+//Para pruebas: Indica que Sebi hace un turno
 function clickHacerTurnoS(){
 	turnos.hacerTurno(personaSebi);
 }
 
-//Crea los datos y establece lo necesario para empezar a trabajar
-//Dejar siempre al final para que tenga ya declaradas todas las funciones
-function onLoad(){
-	crearVariables();
-	iniciarPagina();
-	mostrarEstado();
+
+//Muestra el contenido del dropdown
+function dropdown() {
+        document.getElementById("dropdownOpciones").classList.toggle("show");
 }

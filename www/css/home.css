@@ -6,60 +6,93 @@ body{
 	Todo lo del header sacado de
 	http://jsbin.com/UWeQeli/1/edit?html,css,output
 */
-/* BARRA HEADER */
-	.barraHeader {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		height: 44px;
-		/*color: white;*/
-		background-color: #ddd;
-    	box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
-		z-index: 1;
-	}
 
-	.barraHeader .tituloHeader {
-		/*color: #212121; Cambia con cada usuario*/
-		font-weight: bold;  
-		position: absolute;
-		left: 44px;
-		right: 44px;
-		text-align: center;
-		font-size: 150%;
-		margin: 8px;
-	}
+/* BARRA HEADER */
+.barraHeader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 44px;
+	/*color: white;*/
+	background-color: #ddd;
+	box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+	z-index: 1;
+}
+
+
+/*Contenido del medio de la barra header*/
+.barraHeader .tituloHeader {
+	/*color: #212121; Cambia con cada usuario*/
+	font-weight: bold;  
+	position: absolute;
+	left: 44px;
+	right: 44px;
+	text-align: center;
+	font-size: 150%;
+	margin: 8px;
+}
+
 
 /* POSICION DE BOTONES */
-	.botonLeft {
-		left: 0;
-		border-right: 1px;
-	}
+.botonLeft {
+	left: 0;
+	border-right: 1px;
+}
 
-	.botonRight {
-		right: 0;
-		border-left: 1px;
-	}
+.botonRight {
+	right: 0;
+	border-left: 1px;
+}
+
 
 /* BOTONES DE LA BARRA HEADER */
-	.barraHeader .boton {
-		width: 44px;
-		height: 44px;
-		position: absolute;
-		top: 0;
-		bottom: 0;
-	}
+.barraHeader .boton {
+	width: 44px;
+	height: 44px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+}
 
-	.barraHeader .boton a {
-		display: block;
-		text-align: center;
-		font-size: 150%;
-		font-weight: bolder;
-		height: 39px;
-		padding-top: 5px;
-	}
 
-	.barraHeader .boton a:active {
-		background-color: #ccc;
-	}
+/*Iconos de los botones de la barra header*/
+.barraHeader .boton a {
+	display: block;
+	text-align: center;
+	font-size: 150%;
+	font-weight: bolder;
+	height: 39px;
+	padding-top: 5px;
+}
+
+.barraHeader .boton a:active {
+	/*background-color: #ccc; Lo dejo por si lo llego a necesitar*/
+}
+
+
+/* Contenedor de opciones de dropdown (escondido al inicio) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+    font-size: 0.7em;
+}
+
+
+/* Cada opcion dentro del dropdown */
+.dropdown-content p {
+    color: black;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+}
+
+
+/* Clase general para cambiar la visibilidad */
+.show {display:block;}
 

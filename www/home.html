@@ -12,7 +12,15 @@
 		<div class="barraHeader">
 			<div class="boton botonLeft"><a>&#9776;</a></div>
 			<div class="tituloHeader">Example App</div>
-			<div class="boton botonRight"><a>&vellip;</a></div>
+			<div class="boton botonRight" id="dropdown">
+                <a onclick="dropdown()">&vellip;</a>
+                <div id="dropdownOpciones" class="dropdown-content" align="left">
+                    <p href="#" onclick="">Opciones</p>
+                    <p href="#" onclick="">Opciones</p>
+                    <p href="#" onclick="">Opciones</p>
+                    <!-- <p href="#"  onclick="cordova.InAppBrowser.open('https://instagram.com/rossi_seba', '_system', 'location=yes');">Contacto</p> -->
+                </div>
+            </div>
 		</div>
 
 		<div id="contenidoPagina" style = "margin-top: 50px">
@@ -22,6 +30,7 @@
 			<div id="estadoJ"></div>
 			<div id="estadoG"></div>
 			<div id="estadoS"></div>
+			<div id="siguienteTurno"></div>
 		</div>
 	</div>
 <script type="text/javascript" src="js\home.js"></script>
