@@ -7,6 +7,21 @@ function onLoad(){
 }
 
 
+//Esconder el dropdown si se clickea afuera
+window.onclick = function(event) {
+    if (!event.target.matches('.botonDropdown')) {
+        var dropdowns = document.getElementsByClassName("dropdownContent");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }	
+}
+
+
 //Crea todas las variables necesarias para empezar a trabajar
 function crearVariables(){
 	//Clase para la logica de las personas con metodos para turnos
@@ -20,7 +35,9 @@ function crearVariables(){
 			this.siguienteRealizador = [this];
 		}
 		hiceElTurnoDe(alguien){
+			//Si no hice mi propio turno
 			if(alguien != this){
+				//Si quien hizo mi turno no me lo "debía"
 				if(alguien.quienHaceMiTurno() != this){	
 					this.siguienteRealizador.unshift(alguien.quienHaceMiTurno());
 					if(alguien != alguien.quienHaceMiTurno()){
@@ -74,6 +91,7 @@ function crearVariables(){
 	arrayPersonas.push(personaGuady);
 	arrayPersonas.push(personaSebi);
 
+	//Objeto unico para controlar las posiciones de los turnos
 	turnos = new Turnos(personaJuli, personaGuady, personaSebi);
 }
 
@@ -212,3 +230,41 @@ function clickHacerTurnoS(){
 function dropdown() {
         document.getElementById("dropdownOpciones").classList.toggle("show");
 }
+
+//Cierra la sesion del usuario actual
+function cerrarSesion(){
+	//Borra el estado de los objetos y la página actual
+	location.reload(true);
+
+	//Vuelve a la página de inicion de sesión
+	location.replace("login.html");
+}
+
+//Cambia la página a la vista de opciones de usuario
+function mostrarVistaOpcionesDeUsuario() {
+	activarVista("vistaOpcionesDeUsuario");
+}
+
+//Cambia la página a vista inicial
+function mostrarVistaInicial(){
+	activarVista("vistaInicial");
+}
+
+//Cambia el contenido a la página con id indicada
+function activarVista(idVistaNueva) {
+	//Por defecto, las vistas de paginas estan escondidas. La clase vistaActiva sobreescribe la visibilidad
+	//La clase "vistaActiva" solo lal debe tener el elemento de vista que se esté mostrando al momento
+	//Busca las vistas a mostrar y la vista actual
+	var vistaActiva = document.getElementsByClassName("vistaActiva")[0];
+	var vistaNueva = document.getElementById(idVistaNueva);
+
+	//Cambia las clases para mostrar la nueva vista y desactivar la anterior
+	vistaActiva.classList.toggle("vistaActiva");
+	vistaNueva.classList.toggle("vistaActiva");
+	
+	//Le saco los show para dejar la visibilidad a cargo de la vistaActiva
+	// vistaActiva.classList.toggle("show");
+	// vistaNueva.classList.toggle("show");
+
+}
+

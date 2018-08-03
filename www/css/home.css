@@ -72,7 +72,7 @@ body{
 
 
 /* Contenedor de opciones de dropdown (escondido al inicio) */
-.dropdown-content {
+.dropdownContent {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
@@ -85,7 +85,7 @@ body{
 
 
 /* Cada opcion dentro del dropdown */
-.dropdown-content p {
+.dropdownContent p {
     color: black;
     padding: 8px 12px;
     text-decoration: none;
@@ -93,6 +93,17 @@ body{
 }
 
 
-/* Clase general para cambiar la visibilidad */
-.show {display:block;}
+/*Las vistas están escondidas por defecto*/
+.vistaDePagina{
+	display: none
+}
 
+/*Siempre debe ir ultimo el "show" para que sobreescriba el display none de la vista de pagina activa */
+.vistaActiva{
+	display: block;
+}
+
+/* Clase general para cambiar la visibilidad */
+.show {
+	display:block;
+}
